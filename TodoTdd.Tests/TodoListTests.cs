@@ -22,9 +22,9 @@ namespace TodoTdd.Tests
         {
         }
 
-        internal List<string> ObtenerTareas()
+        public List<string> ObtenerTareas()
         {
-            throw new NotImplementedException();
+            return new List<string>();
         }
     }
 }
