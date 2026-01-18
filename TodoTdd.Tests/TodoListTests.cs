@@ -28,6 +28,16 @@ namespace TodoTdd.Tests
             var tareas = listaDeTareas.ObtenerTareas();
             tareas.Should().Contain(tarea);
         }
+
+        [Fact]
+        public void Debe_GenerarUnaAlertaDeError_CuandoLaDescripcionDeLatareaEsVacia()
+        {
+            var listaDeTareas = new ListaDeTareas();
+
+            Action accion = () => listaDeTareas.AgregarTarea("");
+
+            accion.Should().Throw<ArgumentException>().WithMessage("La descripción no puede estar vacia");
+        }
     }
 
     public class ListaDeTareas
