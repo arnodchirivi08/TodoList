@@ -1,0 +1,24 @@
+# --- Directorios de Compilación ---
+[Bb]in/
+[Oo]bj/
+
+# --- Visual Studio ---
+.vs/
+*.user
+*.userosscache
+*.sln.docstates
+*.suo
+
+# --- Herramientas de .NET (NuGet) ---
+# Ignora la carpeta de paquetes porque se restauran automáticamente
+packages/
+# Archivos de caché de NuGet
+*.nuget.cache
+
+# --- Test Results ---
+TestResults/
+
+# --- Otros ---
+# Archivos generados por sistemas operativos
+Thumbs.db
+.DS_Store
