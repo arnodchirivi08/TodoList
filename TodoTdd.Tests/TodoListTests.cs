@@ -10,21 +10,38 @@ namespace TodoTdd.Tests
         {
             var todo = new ListaDeTareas();
 
-            List<string> tareas = todo.ObtenerTareas();
+            var tareas = todo.ObtenerTareas();
+
 
             tareas.Should().BeEmpty();
+        }
+
+
+        [Fact]
+        public void Deberia_TenerUnaTarea_CuandoSeAgregaUnaATareaAListaVacia()
+        {
+            var listaDeTareas = new ListaDeTareas();
+            var tarea = "Tarea 1";
+
+            listaDeTareas.AgregarTarea(tarea);
+
+            var tareas = listaDeTareas.ObtenerTareas();
+            tareas.Should().Contain(tarea);
         }
     }
 
     public class ListaDeTareas
     {
-        public ListaDeTareas()
+        private List<string> tareas = new List<string>();
+
+        public IReadOnlyList<string> ObtenerTareas()
         {
+            return tareas.AsReadOnly();
         }
 
-        public List<string> ObtenerTareas()
+        public void AgregarTarea(string tarea)
         {
-            return new List<string>();
+            tareas.Add(tarea);
         }
     }
 }
