@@ -8,7 +8,7 @@ namespace TodoTdd.Tests
         [Fact]
         public void Debe_EstarVacia_CuandoSeCreaUnaListaDeTareas()
         {
-            var todo = new Todo();
+            var todo = new ListaDeTareas();
 
             List<string> tareas = todo.ObtenerTareas();
 
@@ -16,9 +16,9 @@ namespace TodoTdd.Tests
         }
     }
 
-    public class Todo
+    public class ListaDeTareas
     {
-        public Todo()
+        public ListaDeTareas()
         {
         }
 
