@@ -38,5 +38,17 @@ namespace TodoTdd.Tests
 
             accion.Should().Throw<ArgumentException>().WithMessage("La descripción no puede estar vacia");
         }
+
+        [Fact]
+        public void Debe_GenerarUnaAlertaDeError_CuandoLaDescripcionDeLatareaYaExiste()
+        {
+            var listaDeTareas = new ListaDeTareas();
+            var tarea = "Tarea 1";
+
+            listaDeTareas.AgregarTarea(tarea);
+            Action accion = () => listaDeTareas.AgregarTarea(tarea);
+
+            accion.Should().Throw<ArgumentException>().WithMessage("La descripción no puede ser duplicada");
+        }
     }
 }
