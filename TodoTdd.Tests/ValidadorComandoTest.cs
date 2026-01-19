@@ -13,5 +13,16 @@ namespace TodoTdd.Tests
 
             resultado.Should().BeTrue();
         }
+
+
+        [Fact]
+        public void Debe_SerComandoValido_CuandoEs_s_minuscula()
+        {
+            var validador = new ValidadorComando();
+
+            bool resultado = validador.EsValido("s");
+
+            resultado.Should().BeTrue();
+        }
     }
 }

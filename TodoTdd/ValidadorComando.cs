@@ -5,7 +5,7 @@ namespace TodoTdd
     {
         public bool EsValido(string opcion)
         {
-            return opcion == "S";
+            return opcion == "S" || opcion == "s";
         }
     }
 }
