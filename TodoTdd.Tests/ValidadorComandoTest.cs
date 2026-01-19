@@ -44,5 +44,15 @@ namespace TodoTdd.Tests
 
             resultado.Should().BeTrue();
         }
+
+        [Fact]
+        public void Debe_SerComandoValido_CuandoEs_R()
+        {
+            var validador = new ValidadorComando();
+
+            bool resultado = validador.EsValido("R");
+
+            resultado.Should().BeTrue();
+        }
     }
 }
