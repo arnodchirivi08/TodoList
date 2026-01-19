@@ -18,7 +18,7 @@ namespace TodoTdd.Tests
 
 
         [Fact]
-        public void Deberia_TenerUnaTarea_CuandoSeAgregaUnaATareaAListaVacia()
+        public void Debe_TenerUnaTarea_CuandoSeAgregaUnaATareaAListaVacia()
         {
             var listaDeTareas = new ListaDeTareas();
             var tarea = "Tarea 1";
@@ -37,24 +37,6 @@ namespace TodoTdd.Tests
             Action accion = () => listaDeTareas.AgregarTarea("");
 
             accion.Should().Throw<ArgumentException>().WithMessage("La descripción no puede estar vacia");
-        }
-    }
-
-    public class ListaDeTareas
-    {
-        private List<string> tareas = new List<string>();
-
-        public IReadOnlyList<string> ObtenerTareas()
-        {
-            return tareas.AsReadOnly();
-        }
-
-        public void AgregarTarea(string tarea)
-        {
-            if (String.IsNullOrEmpty(tarea))
-                throw new ArgumentException("La descripción no puede estar vacia");
-
-            tareas.Add(tarea);
         }
     }
 }
