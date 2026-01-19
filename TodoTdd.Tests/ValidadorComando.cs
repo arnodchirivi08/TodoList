@@ -3,13 +3,9 @@ namespace TodoTdd.Tests
 {
     public class ValidadorComando
     {
-        public ValidadorComando()
+        public bool EsValido(string opcion)
         {
-        }
-
-        internal bool EsValido(string v)
-        {
-            throw new NotImplementedException();
+            return opcion == "S";
         }
     }
 }
