@@ -1,5 +1,5 @@
 ﻿
-namespace TodoTdd.Tests
+namespace TodoTdd
 {
     public class ValidadorComando
     {
