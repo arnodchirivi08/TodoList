@@ -76,7 +76,7 @@ namespace TodoTdd.Tests
             var listaDeTareas = new ListaDeTareas();
             listaDeTareas.AgregarTarea("Tarea 1");
 
-            Action accion = () => listaDeTareas.EliminarTarea(10);
+            Action accion = () => listaDeTareas.EliminarTarea(1);
 
             accion.Should().Throw<ArgumentException>().WithMessage("El indice es invalido");
         }

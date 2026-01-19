@@ -25,6 +25,9 @@
 
         public void EliminarTarea(int indice)
         {
+            if (indice < 0 || indice >= tareas.Count)
+                throw new ArgumentException("El indice es invalido");
+
             tareas.RemoveAt(indice);
         }
     }
