@@ -1,5 +1,6 @@
 ﻿
 using FluentAssertions;
+using System.Threading;
 
 namespace TodoTdd.Tests
 {
@@ -49,6 +50,24 @@ namespace TodoTdd.Tests
             Action accion = () => listaDeTareas.AgregarTarea(tarea);
 
             accion.Should().Throw<ArgumentException>().WithMessage("La descripción no puede ser duplicada");
+        }
+
+        [Fact]
+        public void Debe_EliminarLaTarea_CuandoSeEnvieElIndice()
+        {
+            var listaDeTareas = new ListaDeTareas();
+            var tarea1 = "Tarea 1";
+            var tarea2 = "Tarea 2";
+
+            listaDeTareas.AgregarTarea(tarea1);
+            listaDeTareas.AgregarTarea(tarea2);
+
+            listaDeTareas.EliminarTarea(1);
+
+            var tareas = listaDeTareas.ObtenerTareas();
+
+            tareas.Should().HaveCount(1);
+            tareas.Should().NotContain(tarea2);
         }
     }
 }

@@ -22,5 +22,10 @@
             if (tareas.Contains(tarea))
                 throw new ArgumentException("La descripción no puede ser duplicada");
         }
+
+        public void EliminarTarea(int v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
