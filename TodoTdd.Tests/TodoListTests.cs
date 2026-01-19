@@ -69,5 +69,16 @@ namespace TodoTdd.Tests
             tareas.Should().HaveCount(1);
             tareas.Should().NotContain(tarea2);
         }
+
+        [Fact]
+        public void Debe_GenerarUnaAlertaDeError_CuandoElIndiceProporcionadoNoExista()
+        {
+            var listaDeTareas = new ListaDeTareas();
+            listaDeTareas.AgregarTarea("Tarea 1");
+
+            Action accion = () => listaDeTareas.EliminarTarea(10);
+
+            accion.Should().Throw<ArgumentException>().WithMessage("El indice es invalido");
+        }
     }
 }
