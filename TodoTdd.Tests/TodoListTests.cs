@@ -51,6 +51,9 @@ namespace TodoTdd.Tests
 
         public void AgregarTarea(string tarea)
         {
+            if (String.IsNullOrEmpty(tarea))
+                throw new ArgumentException("La descripción no puede estar vacia");
+
             tareas.Add(tarea);
         }
     }
