@@ -13,7 +13,6 @@ namespace TodoTdd.Tests
 
             var tareas = todo.ObtenerTareas();
 
-
             tareas.Should().BeEmpty();
         }
 
@@ -79,6 +78,16 @@ namespace TodoTdd.Tests
             Action accion = () => listaDeTareas.EliminarTarea(1);
 
             accion.Should().Throw<ArgumentException>().WithMessage("El indice es invalido");
+        }
+
+        [Fact]
+        public void Debe_SerComandoValido_CuandoEs_S()
+        {
+            var validador = new ValidadorComando();
+
+            bool resultado = validador.EsValido("S");
+
+            resultado.Should().BeTrue();
         }
     }
 }
