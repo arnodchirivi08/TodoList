@@ -5,7 +5,7 @@ namespace TodoTdd
     {
         public bool EsValido(string opcion)
         {
-            string[] comandosAceptados = ["S", "A", "R"];
+            string[] comandosAceptados = ["S", "A", "R", "E"];
             return comandosAceptados.Contains(opcion.ToUpper());
         }
     }
