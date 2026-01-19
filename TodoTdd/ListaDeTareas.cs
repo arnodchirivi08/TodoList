@@ -23,9 +23,9 @@
                 throw new ArgumentException("La descripción no puede ser duplicada");
         }
 
-        public void EliminarTarea(int v)
+        public void EliminarTarea(int indice)
         {
-            throw new NotImplementedException();
+            tareas.RemoveAt(indice);
         }
     }
 }
