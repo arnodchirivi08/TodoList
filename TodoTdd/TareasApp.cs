@@ -44,10 +44,20 @@ namespace TodoTdd
         private void MostrarTareas()
         {
             var tareas = listaDeTareas.ObtenerTareas();
-            for (int i = 0; i < tareas.Count; i++)
+            var cantidadTareas = tareas.Count;
+
+            if(cantidadTareas > 0)
             {
-                consola.WriteLine($"{i + 1}. {tareas[i]}");
+                for (int i = 0; i < cantidadTareas; i++)
+                {
+                    consola.WriteLine($"{i + 1}. {tareas[i]}");
+                }
             }
+            else
+            {
+                consola.WriteLine("No TODOs have been added yet");
+            }
+         
         }
     }
 }
