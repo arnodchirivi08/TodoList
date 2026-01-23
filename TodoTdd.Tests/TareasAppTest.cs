@@ -42,7 +42,6 @@ namespace TodoTdd.Tests
         public void Debe_LeerElTexto_CuandoElUsarioIngreseUnaOpcionIncorrectaMostrarMensaje_Incorrect_input()
         {
             var consoleMock = new Mock<IConsole>();
-            consoleMock.Setup(c => c.ReadLine()).Returns("Z");
 
             var listaTareas = new ListaDeTareas();
             var validador = new ValidadorComando();
@@ -58,7 +57,6 @@ namespace TodoTdd.Tests
         public void Debe_MostrarTodasLasTareas_CuandoElUsuarioIngreseLaInstruccion_S()
         {
             var consoleMock = new Mock<IConsole>();
-            consoleMock.Setup(c => c.ReadLine()).Returns("S");
             var listaTareas = new ListaDeTareas();
             listaTareas.AgregarTarea("Estudiar C");
             listaTareas.AgregarTarea("Lavar loza");
@@ -70,6 +68,21 @@ namespace TodoTdd.Tests
 
             consoleMock.Verify(c => c.WriteLine("1. Estudiar C"), Times.Once);
             consoleMock.Verify(c => c.WriteLine("2. Lavar loza"), Times.Once);
+        }
+
+        [Fact]
+        public void Debe_MostrarElMensaje_No_TODOs_have_been_added_yet_CuandoNoHayTareas()
+        {
+            var consolaMock = new Mock<IConsole>();
+
+            var listadoTareas = new ListaDeTareas();
+            var validador = new ValidadorComando();
+
+            var aplicacion = new TareasApp(consolaMock.Object,listadoTareas, validador);
+
+            aplicacion.ProcesarInstruccion("s");
+
+            consolaMock.Verify(c => c.WriteLine("No TODOs have been added yet"), Times.Once);
         }
     }
 }
