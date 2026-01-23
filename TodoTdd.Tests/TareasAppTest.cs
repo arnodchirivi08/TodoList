@@ -124,5 +124,24 @@ namespace TodoTdd.Tests
             consolaMock.Verify(c => c.ReadLine(), Times.Once);
             consolaMock.Verify(console => console.WriteLine("The description cannot be empty."), Times.Once());
         }
+
+        [Fact]
+        public void DebeMostrarMensajeDe_The_description_must_be_unique_CuandoExistaUnaTareaConEseMismoNombre()
+        {
+            string tareaDuplicada = "Lavar el carro";
+            var consolaMock = new Mock<IConsole>();
+            consolaMock.Setup(c => c.ReadLine()).Returns(tareaDuplicada);
+
+            var listadoTareas = new ListaDeTareas();
+            listadoTareas.AgregarTarea(tareaDuplicada);
+
+            var validador = new ValidadorComando();
+            var aplicacion = new TareasApp(consolaMock.Object, listadoTareas, validador);
+
+            aplicacion.ProcesarInstruccion("A");
+            consolaMock.Verify(c => c.WriteLine("Enter the TODO description:"), Times.Once);
+
+            consolaMock.Verify(console => console.WriteLine("The_description_must_be_unique."), Times.Once());
+        }
     }
 }
