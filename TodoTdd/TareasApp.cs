@@ -3,20 +3,24 @@ namespace TodoTdd
 {
     public class TareasApp
     {
-        private IConsole consolaMock;
+        private IConsole consola;
         private ListaDeTareas listaDeTareas;
         private ValidadorComando validador;
 
-        public TareasApp(IConsole consolaMock, ListaDeTareas listaDeTareas, ValidadorComando validador)
+        public TareasApp(IConsole consola, ListaDeTareas listaDeTareas, ValidadorComando validador)
         {
-            this.consolaMock = consolaMock;
+            this.consola = consola;
             this.listaDeTareas = listaDeTareas;
             this.validador = validador;
         }
 
         public void MostrarMenu()
         {
-            throw new NotImplementedException();
+            consola.WriteLine("Hello");
+            consola.WriteLine("[S]ee all TODOs");
+            consola.WriteLine("[A]dd a TODO");
+            consola.WriteLine("[R]emove a TODO");
+            consola.WriteLine("[E]xit");
         }
     }
 }
