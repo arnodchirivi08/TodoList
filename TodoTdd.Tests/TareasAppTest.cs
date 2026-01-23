@@ -52,5 +52,24 @@ namespace TodoTdd.Tests
 
             consoleMock.Verify(console => console.WriteLine("Incorrect input"), Times.Once());
         }
+
+
+        [Fact]
+        public void Debe_MostrarTodasLasTareas_CuandoElUsuarioIngreseLaInstruccion_S()
+        {
+            var consoleMock = new Mock<IConsole>();
+            consoleMock.Setup(c => c.ReadLine()).Returns("S");
+            var listaTareas = new ListaDeTareas();
+            listaTareas.AgregarTarea("Estudiar C");
+            listaTareas.AgregarTarea("Lavar loza");
+
+            var validador = new ValidadorComando();
+            var aplicacion = new TareasApp(consoleMock.Object, listaTareas, validador);
+
+            aplicacion.ProcesarInstruccion("S");
+
+            consoleMock.Verify(c => c.WriteLine("1. Estudiar C"), Times.Once);
+            consoleMock.Verify(c => c.WriteLine("2. Lavar loza"), Times.Once);
+        }
     }
 }
