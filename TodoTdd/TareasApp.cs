@@ -30,9 +30,10 @@ namespace TodoTdd
             consola.WriteLine("[E]xit");
         }
 
-        public void ProcesarInstruccion(string v)
+        public void ProcesarInstruccion(string instruccion)
         {
-            throw new NotImplementedException();
+            if (!validador.EsValido(instruccion))
+                consola.WriteLine("Incorrect input");
         }
     }
 }
