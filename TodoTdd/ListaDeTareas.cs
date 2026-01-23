@@ -35,7 +35,7 @@
 
         public bool Existe(string tarea)
         {
-            throw new NotImplementedException();
+            return tareas.Contains(tarea);
         }
     }
 }
