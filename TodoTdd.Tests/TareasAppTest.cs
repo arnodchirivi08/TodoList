@@ -1,4 +1,5 @@
-﻿using Moq;
+﻿using FluentAssertions;
+using Moq;
 
 namespace TodoTdd.Tests
 {
@@ -20,6 +21,21 @@ namespace TodoTdd.Tests
             consolaMock.Verify(console => console.WriteLine("[A]dd a TODO"), Times.Once());
             consolaMock.Verify(console => console.WriteLine("[R]emove a TODO"), Times.Once());
             consolaMock.Verify(console => console.WriteLine("[E]xit"), Times.Once());
+        }
+
+        [Fact]
+        public void Debe_LeerElTexto_CuandoElUsarioIngreseUnaOpcion()
+        {
+            var consoleMock = new Mock<IConsole>();
+            consoleMock.Setup(c => c.ReadLine()).Returns("S");
+
+            var listaTareas = new ListaDeTareas();
+            var validador = new ValidadorComando();
+            var aplicacion = new TareasApp(consoleMock.Object, listaTareas, validador);
+
+            string textoIngresadoUsuario = aplicacion.LeerInstrucion();
+
+            textoIngresadoUsuario.Should().Be("S");
         }
     }
 }

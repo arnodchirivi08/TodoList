@@ -1,4 +1,5 @@
 ﻿
+
 namespace TodoTdd
 {
     public class TareasApp
@@ -12,6 +13,11 @@ namespace TodoTdd
             this.consola = consola;
             this.listaDeTareas = listaDeTareas;
             this.validador = validador;
+        }
+
+        public string LeerInstrucion()
+        {
+            throw new NotImplementedException();
         }
 
         public void MostrarMenu()
