@@ -34,6 +34,15 @@ namespace TodoTdd
         {
             if (!validador.EsValido(instruccion))
                 consola.WriteLine("Incorrect input");
+
+            if (instruccion.ToUpper() == "S")
+            {
+                var tareas = listaDeTareas.ObtenerTareas();
+                for (int i = 0; i < tareas.Count; i++)
+                {
+                    consola.WriteLine($"{i + 1}. {tareas[i]}");
+                }
+            }
         }
     }
 }
