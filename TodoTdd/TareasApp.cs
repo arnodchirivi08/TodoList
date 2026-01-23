@@ -37,11 +37,16 @@ namespace TodoTdd
 
             if (instruccion.ToUpper() == "S")
             {
-                var tareas = listaDeTareas.ObtenerTareas();
-                for (int i = 0; i < tareas.Count; i++)
-                {
-                    consola.WriteLine($"{i + 1}. {tareas[i]}");
-                }
+                MostrarTareas();
+            }
+        }
+
+        private void MostrarTareas()
+        {
+            var tareas = listaDeTareas.ObtenerTareas();
+            for (int i = 0; i < tareas.Count; i++)
+            {
+                consola.WriteLine($"{i + 1}. {tareas[i]}");
             }
         }
     }
