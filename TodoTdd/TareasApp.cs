@@ -42,11 +42,16 @@ namespace TodoTdd
 
             if (instruccion.ToUpper() == "A")
             {
-                consola.WriteLine("Enter the TODO description:");
-                string tarea = consola.ReadLine();
-                listaDeTareas.AgregarTarea(tarea);
-                consola.WriteLine("TODO successfully added: Lavar loza");
+                AgregarTareaALista();
             }
+        }
+
+        private void AgregarTareaALista()
+        {
+            consola.WriteLine("Enter the TODO description:");
+            string tarea = consola.ReadLine();
+            listaDeTareas.AgregarTarea(tarea);
+            consola.WriteLine("TODO successfully added: Lavar loza");
         }
 
         private void MostrarTareas()

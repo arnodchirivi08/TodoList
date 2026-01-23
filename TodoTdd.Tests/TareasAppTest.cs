@@ -105,5 +105,22 @@ namespace TodoTdd.Tests
 
             listadoTareas.ObtenerTareas().Should().Contain("Lavar loza");
         }
+
+
+        [Fact]
+        public void Debe_MostrarMensajeQueNoPuedeSerVaciaLaDescricpcion_CuandoLaTareaSeaVacio()
+        {
+            var consolaMock = new Mock<IConsole>();
+            consolaMock.Setup(c => c.ReadLine()).Returns("");
+
+            var listadoTareas = new ListaDeTareas();
+            var validador = new ValidadorComando();
+            var aplicacion = new TareasApp(consolaMock.Object, listadoTareas, validador);
+
+            aplicacion.ProcesarInstruccion("A");
+            consolaMock.Verify(c => c.WriteLine("Enter the TODO description:"), Times.Once);
+            consolaMock.Verify(c => c.ReadLine(), Times.Once);
+            consolaMock.Verify(console => console.WriteLine("The description cannot be empty."), Times.Once());
+        }
     }
 }
