@@ -85,11 +85,13 @@ namespace TodoTdd.Tests
             consolaMock.Verify(c => c.WriteLine("No TODOs have been added yet"), Times.Once);
         }
 
-        [Fact]
-        public void Debe_MostrarUnMensaje_CuandoSeAgregueUnaNuevaTareaYElMenuDeOpciones()
+        [Theory]
+        [InlineData("Lavar loza")]
+        [InlineData("Lavar ropa")]
+        public void Debe_MostrarUnMensaje_CuandoSeAgregueUnaNuevaTarea(string tarea)
         {
             var consolaMock = new Mock<IConsole>();
-            consolaMock.Setup(c => c.ReadLine()).Returns("Lavar loza");
+            consolaMock.Setup(c => c.ReadLine()).Returns(tarea);
 
             var listadoTareas = new ListaDeTareas();
             var validador = new ValidadorComando();
@@ -101,9 +103,9 @@ namespace TodoTdd.Tests
 
             consolaMock.Verify(c => c.WriteLine("Enter the TODO description:"), Times.Once);
             consolaMock.Verify(c => c.ReadLine(), Times.Once);
-            consolaMock.Verify(console => console.WriteLine("TODO successfully added: Lavar loza"), Times.Once());
+            consolaMock.Verify(console => console.WriteLine($"TODO successfully added: {tarea}"), Times.Once());
 
-            listadoTareas.ObtenerTareas().Should().Contain("Lavar loza");
+            listadoTareas.ObtenerTareas().Should().Contain(tarea);
         }
 
 
