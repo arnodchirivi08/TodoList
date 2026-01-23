@@ -48,7 +48,7 @@ namespace TodoTdd.Tests
             var validador = new ValidadorComando();
             var aplicacion = new TareasApp(consoleMock.Object, listaTareas, validador);
 
-            aplicacion.ProcesarInstruccion();
+            aplicacion.ProcesarInstruccion("Z");
 
             consoleMock.Verify(console => console.WriteLine("Incorrect input"), Times.Once());
         }

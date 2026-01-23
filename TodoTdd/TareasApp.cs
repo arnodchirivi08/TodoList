@@ -30,7 +30,7 @@ namespace TodoTdd
             consola.WriteLine("[E]xit");
         }
 
-        public void ProcesarInstruccion()
+        public void ProcesarInstruccion(string v)
         {
             throw new NotImplementedException();
         }
