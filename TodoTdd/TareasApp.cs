@@ -63,7 +63,7 @@ namespace TodoTdd
         private void AgregarTareaALista(string tarea)
         {
             listaDeTareas.AgregarTarea(tarea);
-            consola.WriteLine("TODO successfully added: Lavar loza");
+            consola.WriteLine($"TODO successfully added: {tarea}");
         }
 
         private void MostrarTareas()
