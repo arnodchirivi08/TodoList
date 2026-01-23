@@ -32,7 +32,7 @@ namespace TodoTdd
 
         public void ProcesarInstruccion(string instruccion)
         {
-            if (!validador.EsValido(instruccion))
+            if (!validador.EsValido(instruccion)) { }
                 consola.WriteLine("Incorrect input");
 
             if (instruccion.ToUpper() == "S")
@@ -42,14 +42,26 @@ namespace TodoTdd
 
             if (instruccion.ToUpper() == "A")
             {
-                AgregarTareaALista();
+                ProcesarTarea();
             }
         }
 
-        private void AgregarTareaALista()
+
+        private void ProcesarTarea()
         {
             consola.WriteLine("Enter the TODO description:");
             string tarea = consola.ReadLine();
+
+            if (string.IsNullOrEmpty(tarea))
+            {
+                consola.WriteLine("The description cannot be empty.");
+                return;
+            }
+
+            AgregarTareaALista(tarea);
+        }
+        private void AgregarTareaALista(string tarea)
+        {
             listaDeTareas.AgregarTarea(tarea);
             consola.WriteLine("TODO successfully added: Lavar loza");
         }
