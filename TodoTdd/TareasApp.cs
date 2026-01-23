@@ -52,6 +52,13 @@ namespace TodoTdd
             consola.WriteLine("Enter the TODO description:");
             string tarea = consola.ReadLine();
 
+            var tareas = listaDeTareas.ObtenerTareas();
+            if (tareas.Contains(tarea))
+            {
+                consola.WriteLine("The_description_must_be_unique.");
+                return;
+            }
+
             if (string.IsNullOrEmpty(tarea))
             {
                 consola.WriteLine("The description cannot be empty.");
