@@ -1,5 +1,6 @@
 ﻿
 
+
 namespace TodoTdd
 {
     public class TareasApp
@@ -27,6 +28,11 @@ namespace TodoTdd
             consola.WriteLine("[A]dd a TODO");
             consola.WriteLine("[R]emove a TODO");
             consola.WriteLine("[E]xit");
+        }
+
+        public void ProcesarInstruccion()
+        {
+            throw new NotImplementedException();
         }
     }
 }

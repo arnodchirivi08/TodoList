@@ -37,5 +37,20 @@ namespace TodoTdd.Tests
 
             textoIngresadoUsuario.Should().Be("S");
         }
+
+        [Fact]
+        public void Debe_LeerElTexto_CuandoElUsarioIngreseUnaOpcionIncorrectaMostrarMensaje_Incorrect_input()
+        {
+            var consoleMock = new Mock<IConsole>();
+            consoleMock.Setup(c => c.ReadLine()).Returns("Z");
+
+            var listaTareas = new ListaDeTareas();
+            var validador = new ValidadorComando();
+            var aplicacion = new TareasApp(consoleMock.Object, listaTareas, validador);
+
+            aplicacion.ProcesarInstruccion();
+
+            consoleMock.Verify(console => console.WriteLine("Incorrect input"), Times.Once());
+        }
     }
 }
