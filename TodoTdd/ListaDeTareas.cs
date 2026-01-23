@@ -32,5 +32,10 @@
             if (tareas.Contains(tarea))
                 throw new ArgumentException("La descripción no puede ser duplicada");
         }
+
+        public bool Existe(string tarea)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

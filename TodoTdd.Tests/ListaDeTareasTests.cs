@@ -4,7 +4,7 @@ using System.Threading;
 
 namespace TodoTdd.Tests
 {
-    public class TodoListTests
+    public class ListaDeTareasTests
     {
         [Fact]
         public void Debe_EstarVacia_CuandoSeCreaUnaListaDeTareas()
@@ -78,6 +78,18 @@ namespace TodoTdd.Tests
             Action accion = () => listaDeTareas.EliminarTarea(1);
 
             accion.Should().Throw<ArgumentException>().WithMessage("El indice es invalido");
+        }
+
+        [Fact]
+        public void Debe_RetonarQueExisteLaTarea_CuandoSeEncuentreEnLalista()
+        {
+            var listaDeTareas = new ListaDeTareas();
+            var tarea = "Tarea 1";
+            listaDeTareas.AgregarTarea(tarea);
+
+            var existeTarea = listaDeTareas.Existe(tarea);
+
+            existeTarea.Should().BeTrue();
         }
     }
 }
