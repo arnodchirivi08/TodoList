@@ -17,7 +17,7 @@ namespace TodoTdd
 
         public string LeerInstrucion()
         {
-            throw new NotImplementedException();
+            return consola.ReadLine();
         }
 
         public void MostrarMenu()
