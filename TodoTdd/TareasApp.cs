@@ -1,7 +1,4 @@
-﻿
-
-
-namespace TodoTdd
+﻿namespace TodoTdd
 {
     public class TareasApp
     {
@@ -53,11 +50,7 @@ namespace TodoTdd
             string tarea = consola.ReadLine();
 
             var tareas = listaDeTareas.ObtenerTareas();
-            if (tareas.Contains(tarea))
-            {
-                consola.WriteLine("The_description_must_be_unique.");
-                return;
-            }
+       
 
             if (string.IsNullOrEmpty(tarea))
             {
@@ -65,8 +58,15 @@ namespace TodoTdd
                 return;
             }
 
+            if (listaDeTareas.Existe(tarea))
+            {
+                consola.WriteLine("The_description_must_be_unique.");
+                return;
+            }
+
             AgregarTareaALista(tarea);
         }
+
         private void AgregarTareaALista(string tarea)
         {
             listaDeTareas.AgregarTarea(tarea);
@@ -86,5 +86,7 @@ namespace TodoTdd
                 consola.WriteLine($"{i + 1}. {tareas[i]}");
             }
         }
+
+   
     }
 }
