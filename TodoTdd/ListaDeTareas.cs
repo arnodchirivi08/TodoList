@@ -18,8 +18,8 @@
         public void EliminarTarea(int indice, out string nombreTareaEliminada)
         {
             ValidarIndice(indice);
-            tareas.RemoveAt(indice);
-            nombreTareaEliminada = "";
+			nombreTareaEliminada = tareas[indice];
+			tareas.RemoveAt(indice);            
         }
         private void ValidarIndice(int indice)
         {
