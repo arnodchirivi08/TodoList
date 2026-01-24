@@ -15,10 +15,11 @@
             tareas.Add(tarea);
         }
         
-        public void EliminarTarea(int indice)
+        public void EliminarTarea(int indice, out string nombreTareaEliminada)
         {
             ValidarIndice(indice);
             tareas.RemoveAt(indice);
+            nombreTareaEliminada = "";
         }
         private void ValidarIndice(int indice)
         {

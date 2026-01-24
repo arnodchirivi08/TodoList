@@ -52,7 +52,7 @@ namespace TodoTdd.Tests
         }
 
         [Fact]
-        public void Debe_EliminarLaTarea_CuandoSeEnvieElIndice()
+        public void Debe_EliminarLaTarea_CuandoSeEnvieElIndiceYRetornarElNombreDeLaTarea()
         {
             var listaDeTareas = new ListaDeTareas();
             var tarea1 = "Tarea 1";
@@ -61,13 +61,15 @@ namespace TodoTdd.Tests
             listaDeTareas.AgregarTarea(tarea1);
             listaDeTareas.AgregarTarea(tarea2);
 
-            listaDeTareas.EliminarTarea(1);
+            listaDeTareas.EliminarTarea(1, out string nombreTareaEliminada);
 
             var tareas = listaDeTareas.ObtenerTareas();
 
             tareas.Should().HaveCount(1);
             tareas.Should().NotContain(tarea2);
-        }
+            nombreTareaEliminada.Should().Be("Tarea 2");
+
+		}
 
         [Fact]
         public void Debe_GenerarUnaAlertaDeError_CuandoElIndiceProporcionadoNoExista()
@@ -75,7 +77,7 @@ namespace TodoTdd.Tests
             var listaDeTareas = new ListaDeTareas();
             listaDeTareas.AgregarTarea("Tarea 1");
 
-            Action accion = () => listaDeTareas.EliminarTarea(1);
+            Action accion = () => listaDeTareas.EliminarTarea(1, out string tarea);
 
             accion.Should().Throw<ArgumentException>().WithMessage("El indice es invalido");
         }

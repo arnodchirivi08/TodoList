@@ -41,7 +41,18 @@
             {
                 ProcesarTarea();
             }
-        }
+
+			if (instruccion.ToUpper() == "R")
+			{
+				consola.WriteLine("Select the index of the TODO you want to remove:");
+
+				var indiceTarea = int.Parse(consola.ReadLine())-1;
+
+				listaDeTareas.EliminarTarea(indiceTarea, out string tareaEliminada);
+
+				consola.WriteLine($"TODO removed: [{tareaEliminada}]");
+			}
+		}
 
 
         private void ProcesarTarea()
