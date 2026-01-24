@@ -1,80 +1,77 @@
-﻿    TODO List
-    Ultimate C# Masterclass Assignment
+﻿# Lista de Tareas (TODO List) - Requisitos
 
-    Overview                                                                                                                                  
-This application is a simple manager of TODOs. Each TODO is simply a  description of a thing to be done (for example, “Order a cake for the birthday party”). Each description must be unique. TODOs can be added, removed, or listed.	 Console App
+## Asignación de la Masterclass Definitiva de C#
 
-                Main application workflow    
-When the application starts, it shall print:
-Hello!
-What do you want to do?
-[S]ee all TODOs
-[A]dd a TODO
-[R]emove a TODO
+### Resumen General
+
+| Concepto                  | Descripción                                                                                                                                                                                                                                                       |
+| ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Aplicación de Consola** | Esta aplicación es un gestor simple de tareas (TODOs). Cada TODO es simplemente una descripción de algo por hacer (por ejemplo, "Pedir un pastel para la fiesta de cumpleaños"). Cada descripción debe ser única. Los TODOs se pueden agregar, eliminar o listar. |
+
+### Flujo principal de la aplicación
+
+Cuando la aplicación inicia, debe imprimir:  
+Hello!  
+What do you want to do?  
+[S]ee all TODOs  
+[A]dd a TODO  
+[R]emove a TODO  
 [E]xit
-The user must select one of the given S, A, R, E options. The selected option can be both uppercase or lowercase, so it doesn’t matter if the user types “S” or “s” - both should go to the “see all todos” case. The user can keep selecting different options until the option “[E]xit” is selected, which will close the application.
- 
- 
 
-                Selecting an option by the user
-Scenario	User action	Result
-Sunny day	User selects any of the S,s,A,a,R,r,E,e options.	The correct option is handled. After it is finished, the choice of options is printed again (unless the Exit option was chosen, which closes the app).
-Incorrect or empty input	User does not select any option (empty choice), or the selected option is not valid.	“Incorrect input” is printed to the console. Then, the selection of choices is printed again. It is repeated until the user provides the correct input.
+El usuario debe seleccionar una de las opciones dadas: S, A, R, E. La opción seleccionada puede ser tanto mayúscula como minúscula, por lo que no importa si el usuario escribe "S" o "s"; ambas deben ir al caso "ver todos los todos".
+El usuario puede seguir seleccionando diferentes opciones hasta que seleccione la opción "[E]xit" (Salir), lo cual cerrará la aplicación.
 
- 
+### Selección de una opción por parte del usuario
 
-                Option “S” - See all TODOs
+| Escenario                  | Acción del usuario                                                                               | Resultado                                                                                                                                                                      |
+| -------------------------- | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Día Soleado (Ideal)        | El usuario selecciona cualquiera de las opciones S,s,A,a,R,r,E,e                                 | La opción correcta es manejada. Al finalizar, se vuelven a imprimir las opciones (a menos que se haya elegido Salir).                                                          |
+| Entrada incorrecta o vacía | El usuario no selecciona ninguna opción (elección vacía), o la opción seleccionada no es válida. | Se imprime en consola "Incorrect input" (Entrada incorrecta). Luego, se vuelven a imprimir las opciones. Esto se repite hasta que el usuario proporcione una entrada correcta. |
 
-A list of all TODOs shall be printed to the console, all prefixed with an index (starting with 1). For example, it could look like this:
+**Opción "S" - Ver todos los TODOs (See all TODOs)**  
+Se debe imprimir en la consola una lista de todos los TODOs, todos prefijados con un índice (comenzando con 1). Por ejemplo, podría verse así:
+
 1. Order a cake for the birthday party.
 2. Buy train tickets for the weekend.
-3. Take Lucky to the vet.
-After the list of TODOs is printed, the application should print again “What do you want to do?” with all available options.
- 
+3. Take Lucky to the vet.  
+   Después de imprimir la lista de TODOs, la aplicación debe imprimir nuevamente "¿Qué quieres hacer?" con todas las opciones disponibles.
 
-Scenario	User action	Result
-Sunny day		The list of all TODOs is printed to the console. Then, the choice of options is printed again.
-There are no TODOs at all		“No TODOs have been added yet.” is printed to the console. Then, the choice of options is printed again.
-
- 
-
-                Option “A” - Add a TODO
-
-After selecting this option, the application shall print:
+**Opción "A" - Agregar un TODO (Add a TODO)**
+Después de seleccionar esta opción, la aplicación debe imprimir:  
 Enter the TODO description:
-Then, the user must enter a unique, non-empty description of a TODO. Once it is done, the application prints:
-TODO successfully added: [DESCRIPTION ]
-Where the DESCRIPTION should be the TODO description the user provided. A TODO shall be added to the collection of TODOs (it can be seen by selecting the “S - See all TODOs” option). After a TODOs is added, the application should print again “What do you want to do?” with all available options.
- 
 
-Scenario	User action	Result
-Sunny day	User inputs a unique, non-empty description of a TODO.	“TODO successfully added: [DESCRIPTION]” is printed to the console. TODO is added to the collection. The choice of options is printed again to the console.
-Empty description	The description the user provided is empty.	“The description cannot be empty.” is printed to the console. No TODO is added. “Enter the TODO description” is printed again.
-Non-unique description	There is already a TODO with the same description as the user provided.	“The description must be unique.” is printed to the console. No TODO is added. “Enter the TODO description” is printed again.
- 
+Luego, el usuario debe ingresar una descripción única y no vacía para el TODO.  
+Una vez hecho esto, la aplicación imprime:
 
+TODO successfully added: [DESCRIPCIÓN]  
+Donde [DESCRIPCIÓN] debe ser la descripción que el usuario proporcionó.
 
-                Option “R” - Remove a TODO
+El TODO debe agregarse a la colección de TODOs (se puede ver seleccionando la opción "S"). Después de agregar un TODO, la aplicación debe imprimir nuevamente las opciones del menú.
 
-After selecting this option, the app should ask:
+| Escenario            | Acción del usuario                                      | Resultado                                                                                                                                                             |
+| -------------------- | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Día Soleado          | El usuario introduce una descripción única y no vacía.  | Se imprime **"TODO successfully added: [DESCRIPCIÓN]"**. El TODO se agrega a la colección. Se vuelven a imprimir las opciones.                                        |
+| Descripción vacía    | La descripción proporcionada por el usuario está vacía. | Se imprime **"The description cannot be empty."** (La descripción no puede estar vacía). No se agrega ningún TODO. Se vuelve a imprimir "Enter the TODO description". |
+| Descripción no única | Ya existe un TODO con la misma descripción.             | Se imprime **"The description must be unique."** (La descripción debe ser única). No se agrega ningún TODO. Se vuelve a imprimir "Enter the TODO description".        |
+
+**Opción "R" - Remover un TODO (Remove a TODO)**  
+Después de seleccionar esta opción, la aplicación debe preguntar:  
 Select the index of the TODO you want to remove:
-Then, the list of all TODOs shall be printed, similarly as described for the “S - See all TODOs” option. If there are no TODOs yet, the program should print:
-No TODOs have been added yet.
-The user should select a correct index from the given list (please notice that this list is indexed from 1, so when the user selects “1,” the first TODO from this list should be removed). After the correct index is selected, the TODO should be removed, which means it will no longer be shown when the S - See all TODOs option is selected. Then, the following message is printed:
-TODO removed: [DESCRIPTION] 
-…where the DESCRIPTION is the description of the TODO that has just been removed. Then the application should print again “What do you want to do?” with all available options.
- 
 
-Scenario	User action	Result
-Sunny day	User inputs a correct index of a TODO.	“TODO removed: [DESCRIPTION]” is printed to the console. TODO is removed from the collection of TODOs. The choice of options is printed again to the console.
-There are no TODOs at all		“No TODOs have been added yet.” is printed to the console. Then, the choice of options is printed again.
-Empty index	The user input is empty.	“Selected index cannot be empty.” is printed to the console. No TODO is removed. “Select the index of the TODO you want to remove” is printed again.
-Invalid index 	The index the user inputs is either not a number or it is not a valid index in the collection. 	“The given index is not valid.” is printed to the console. No TODO is removed. “Select the index of the TODO you want to remove” is printed again.
- 
+Luego, se debe imprimir la lista de todos los TODOs, de manera similar a la opción "S". Si no hay TODOs aún, el programa debe imprimir:  
+No TODOs have been added yet.  
+El usuario debe seleccionar un índice correcto de la lista dada (ten en cuenta que esta lista está indexada desde 1, por lo que si el usuario selecciona "1", se debe eliminar el primer TODO de la lista).  
+Una vez seleccionado el índice correcto, el TODO debe ser eliminado, lo que significa que ya no se mostrará cuando se seleccione la opción "S". Luego, se imprime el siguiente mensaje:  
+TODO removed: [DESCRIPCIÓN]
+...donde [DESCRIPCIÓN] es la descripción del TODO que acaba de ser eliminado. Luego la aplicación debe imprimir nuevamente las opciones del menú.
 
-  
-                Option “E” - Exit
+| Escenario    | Acción del usuario                                  | Resultado                                                                                                                                           |
+| ------------ | --------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Día Soleado  | El usuario introduce un índice correcto de un TODO. | Se imprime **"TODO removed: [DESCRIPCIÓN]".** El TODO se elimina de la colección. Se vuelven a imprimir las opciones.                               |
+| Índice vacío | La entrada del usuario está vacía.                  | Se imprime **"Selected index cannot be empty."** (El índice seleccionado no puede estar vacío). No se elimina nada. Se vuelve a pedir el índice. 15 |
 
-This option simply closes the application.
-                           
- 
+**Opción "E" - Salir (Exit)**  
+
+|Descripción|
+|-----------|
+|Esta opción simplemente cierra la aplicación |
