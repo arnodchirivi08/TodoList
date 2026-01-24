@@ -143,5 +143,29 @@ namespace TodoTdd.Tests
 
             consolaMock.Verify(console => console.WriteLine("The_description_must_be_unique."), Times.Once());
         }
+
+
+        [Fact]
+        public void DebeEliminarLaTareaNumero2DelListado_CuandoSeEjecuteElMetodoEliminarYMostrarEnConsolaElMensajeQueEliminoLaTarea()
+        {
+            var tareaAEliminar = "Tarea 1";
+            var consolaMock = new Mock<IConsole>();
+            consolaMock.Setup(c => c.ReadLine()).Returns("1");
+
+            var listadoTareas = new ListaDeTareas();
+            listadoTareas.AgregarTarea(tareaAEliminar);
+            listadoTareas.AgregarTarea("Tarea 2");
+
+            var validador = new ValidadorComando();
+            
+            var aplicacion = new TareasApp(consolaMock.Object, listadoTareas, validador);
+
+            aplicacion.ProcesarInstruccion("R");
+
+            consolaMock.Verify(c => c.WriteLine("Select the index of the TODO you want to remove:"));
+            consolaMock.Verify(c => c.WriteLine($"TODO removed: [{tareaAEliminar}]"));
+
+            listadoTareas.ObtenerTareas().Should().NotContain(tareaAEliminar);
+		}
     }
 }
