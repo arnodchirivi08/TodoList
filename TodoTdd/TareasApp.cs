@@ -1,4 +1,5 @@
-﻿namespace TodoTdd
+﻿
+namespace TodoTdd
 {
     public class TareasApp
     {
@@ -110,6 +111,11 @@
             {
                 consola.WriteLine($"{i + 1}. {tareas[i]}");
             }
-        }   
+        }
+
+        public void Ejecutar()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

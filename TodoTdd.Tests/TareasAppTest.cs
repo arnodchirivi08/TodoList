@@ -188,5 +188,20 @@ namespace TodoTdd.Tests
             consolaMock.Verify(c => c.WriteLine("Selected index cannot be empty"));
             consolaMock.Verify(c => c.WriteLine("Select the index of the TODO you want to remove:"), Times.Exactly(2));
         }
+
+        [Fact]
+        public void Debe_SalirDelBucle_CuandoElUsuarioIngreseLaOpcion_E()
+        {
+            var consolaMock = new Mock<IConsole>();
+            consolaMock.Setup(c => c.ReadLine()).Returns("E");
+
+            var listadoTareas = new ListaDeTareas();
+            var validador = new ValidadorComando();
+            var aplicacion = new TareasApp(consolaMock.Object, listadoTareas, validador);
+
+            aplicacion.Ejecutar();
+
+            consolaMock.Verify(c => c.WriteLine("Hello"), Times.Once());
+        }
     }
 }
