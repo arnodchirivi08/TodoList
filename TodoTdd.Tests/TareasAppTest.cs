@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using Moq;
+using System;
 
 namespace TodoTdd.Tests
 {
@@ -167,5 +168,24 @@ namespace TodoTdd.Tests
 
             listadoTareas.ObtenerTareas().Should().NotContain(tareaAEliminar);
 		}
+
+        [Fact]
+        public void Debe_LanzarELMensajeDeError_Selected_index_cannot_be_empty_CuandoSeEnvieUnaDescripcionVacia()
+        { 
+            
+            var consolaMock = new Mock<IConsole>();
+            consolaMock.Setup(c => c.ReadLine()).Returns("");
+
+            var listadoTareas = new ListaDeTareas();
+          
+
+            var validador = new ValidadorComando();
+
+            var aplicacion = new TareasApp(consolaMock.Object, listadoTareas, validador);
+
+            aplicacion.ProcesarInstruccion("R");
+
+            consolaMock.Verify(c => c.WriteLine("Selected index cannot be empty"));
+        }
     }
 }
