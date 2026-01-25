@@ -47,20 +47,26 @@
 
         private void EliminarTareaDesdeConsola()
         {
-            consola.WriteLine("Select the index of the TODO you want to remove:");
+            var indiceValido = false;
 
-            var opcionSeleccionadaUsuario = consola.ReadLine();
+            while(!indiceValido)
+            {
+                consola.WriteLine("Select the index of the TODO you want to remove:");
 
-            if (string.IsNullOrEmpty(opcionSeleccionadaUsuario)) {
-                consola.WriteLine("Selected index cannot be empty");
-                return;
+                var opcionSeleccionadaUsuario = consola.ReadLine();
+
+                if (string.IsNullOrEmpty(opcionSeleccionadaUsuario))
+                {
+                    consola.WriteLine("Selected index cannot be empty");
+                    continue;
+                }
+
+                indiceValido = true;
+                var indiceTarea = int.Parse(opcionSeleccionadaUsuario) - 1;
+                listaDeTareas.EliminarTarea(indiceTarea, out string tareaEliminada);              
+                consola.WriteLine($"TODO removed: [{tareaEliminada}]");
             }
-
-            var indiceTarea = int.Parse(opcionSeleccionadaUsuario) - 1;
-
-            listaDeTareas.EliminarTarea(indiceTarea, out string tareaEliminada);
-
-            consola.WriteLine($"TODO removed: [{tareaEliminada}]");
+           
         }
 
         private void ProcesarTarea()
