@@ -203,5 +203,25 @@ namespace TodoTdd.Tests
 
             consolaMock.Verify(c => c.WriteLine("Hello"), Times.Once());
         }
+
+        [Fact]
+        public void Debe_MostrarElMenu_YProcesarInstrucciones_HastaQueElUsuarioIngrese_E()
+        {
+            var consolaMock = new Mock<IConsole>();
+            consolaMock.SetupSequence(c => c.ReadLine())
+                .Returns("A")
+                .Returns("Comprar pan")
+                .Returns("S")
+                .Returns("E");
+
+            var listadoTareas = new ListaDeTareas();
+            var validador = new ValidadorComando();
+            var aplicacion = new TareasApp(consolaMock.Object, listadoTareas, validador);
+
+            aplicacion.Ejecutar();
+
+            consolaMock.Verify(c => c.WriteLine("Hello"), Times.Exactly(3));
+            consolaMock.Verify(c => c.WriteLine("1. Comprar pan"), Times.Once());
+        }
     }
 }
