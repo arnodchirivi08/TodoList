@@ -115,7 +115,13 @@ namespace TodoTdd
 
         public void Ejecutar()
         {
-            throw new NotImplementedException();
+            MostrarMenu();
+            string instruccion = LeerInstrucion();
+    
+            if (instruccion?.ToUpper() == "E")
+            {
+                return;
+            }
         }
     }
 }
