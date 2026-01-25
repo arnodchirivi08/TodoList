@@ -30,8 +30,11 @@ namespace TodoTdd
 
         public void ProcesarInstruccion(string instruccion)
         {
-            if (!validador.EsValido(instruccion)) { }
+            if (!validador.EsValido(instruccion)) {
                 consola.WriteLine("Incorrect input");
+                return;
+            }
+                
 
             string opcionSeleccionada = instruccion.ToUpper();
 
@@ -115,12 +118,21 @@ namespace TodoTdd
 
         public void Ejecutar()
         {
-            MostrarMenu();
-            string instruccion = LeerInstrucion();
-    
-            if (instruccion?.ToUpper() == "E")
+            bool continuar = true;
+
+            while (continuar)
             {
-                return;
+                MostrarMenu();
+                string instruccion = LeerInstrucion();
+
+                if (instruccion?.ToUpper() == "E")
+                {
+                    continuar = false;
+                }
+                else
+                {
+                    ProcesarInstruccion(instruccion);
+                }
             }
         }
     }
