@@ -146,7 +146,7 @@ namespace TodoTdd.Tests
 
 
         [Fact]
-        public void DebeEliminarLaTareaNumero2DelListado_CuandoSeEjecuteElMetodoEliminarYMostrarEnConsolaElMensajeQueEliminoLaTarea()
+        public void DebeEliminarLaTareaNumero2DelListado_CuandoSeEjecuteElMetodo_EliminarTareaDesdeConsola_MostrarEnConsolaElMensajeQueEliminoLaTarea()
         {
             var tareaAEliminar = "Tarea 1";
             var consolaMock = new Mock<IConsole>();

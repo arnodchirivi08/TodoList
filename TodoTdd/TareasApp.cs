@@ -32,28 +32,29 @@
             if (!validador.EsValido(instruccion)) { }
                 consola.WriteLine("Incorrect input");
 
-            if (instruccion.ToUpper() == "S")
+            string opcionSeleccionada = instruccion.ToUpper();
+
+            switch (opcionSeleccionada)
             {
-                MostrarTareas();
+                case "S": MostrarTareas();
+                    break;
+                case "A": ProcesarTarea();
+                    break;
+                case "R": EliminarTareaDesdeConsola();
+                    break;
             }
+        }
 
-            if (instruccion.ToUpper() == "A")
-            {
-                ProcesarTarea();
-            }
+        private void EliminarTareaDesdeConsola()
+        {
+            consola.WriteLine("Select the index of the TODO you want to remove:");
 
-			if (instruccion.ToUpper() == "R")
-			{
-				consola.WriteLine("Select the index of the TODO you want to remove:");
+            var indiceTarea = int.Parse(consola.ReadLine()) - 1;
 
-				var indiceTarea = int.Parse(consola.ReadLine())-1;
+            listaDeTareas.EliminarTarea(indiceTarea, out string tareaEliminada);
 
-				listaDeTareas.EliminarTarea(indiceTarea, out string tareaEliminada);
-
-				consola.WriteLine($"TODO removed: [{tareaEliminada}]");
-			}
-		}
-
+            consola.WriteLine($"TODO removed: [{tareaEliminada}]");
+        }
 
         private void ProcesarTarea()
         {
@@ -96,8 +97,6 @@
             {
                 consola.WriteLine($"{i + 1}. {tareas[i]}");
             }
-        }
-
-   
+        }   
     }
 }
