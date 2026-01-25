@@ -170,14 +170,14 @@ namespace TodoTdd.Tests
 		}
 
         [Fact]
-        public void Debe_LanzarELMensajeDeError_Selected_index_cannot_be_empty_CuandoSeEnvieUnaDescripcionVacia()
+        public void Debe_LanzarELMensajeDeError_Selected_index_cannot_be_empty_CuandoSeEnvieUnaDescripcionVaciaYVolverAImprimerMensajeDeSolicitudEliminacion()
         { 
             
             var consolaMock = new Mock<IConsole>();
-            consolaMock.Setup(c => c.ReadLine()).Returns("");
+            consolaMock.SetupSequence(c => c.ReadLine()).Returns("").Returns("1");
 
             var listadoTareas = new ListaDeTareas();
-          
+            listadoTareas.AgregarTarea("Tarea 2");
 
             var validador = new ValidadorComando();
 
@@ -186,6 +186,7 @@ namespace TodoTdd.Tests
             aplicacion.ProcesarInstruccion("R");
 
             consolaMock.Verify(c => c.WriteLine("Selected index cannot be empty"));
+            consolaMock.Verify(c => c.WriteLine("Select the index of the TODO you want to remove:"), Times.Exactly(2));
         }
     }
 }
