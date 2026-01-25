@@ -49,7 +49,14 @@
         {
             consola.WriteLine("Select the index of the TODO you want to remove:");
 
-            var indiceTarea = int.Parse(consola.ReadLine()) - 1;
+            var opcionSeleccionadaUsuario = consola.ReadLine();
+
+            if (string.IsNullOrEmpty(opcionSeleccionadaUsuario)) {
+                consola.WriteLine("Selected index cannot be empty");
+                return;
+            }
+
+            var indiceTarea = int.Parse(opcionSeleccionadaUsuario) - 1;
 
             listaDeTareas.EliminarTarea(indiceTarea, out string tareaEliminada);
 
