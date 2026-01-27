@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elementos de la solución",
 		Readme.md = Readme.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTodoApp", "ConsoleTodoApp\ConsoleTodoApp.csproj", "{267D7C90-9806-4224-B13C-9BF4D6C97AC5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{D6D51BB7-891A-4AEE-BAD3-DC10AAB05FB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6D51BB7-891A-4AEE-BAD3-DC10AAB05FB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6D51BB7-891A-4AEE-BAD3-DC10AAB05FB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{267D7C90-9806-4224-B13C-9BF4D6C97AC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{267D7C90-9806-4224-B13C-9BF4D6C97AC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{267D7C90-9806-4224-B13C-9BF4D6C97AC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{267D7C90-9806-4224-B13C-9BF4D6C97AC5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

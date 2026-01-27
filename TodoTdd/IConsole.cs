@@ -2,7 +2,7 @@
 {
     public interface IConsole
     {
-        string ReadLine();
+        string? ReadLine();
         void WriteLine(string mensaje);
     }
 }
